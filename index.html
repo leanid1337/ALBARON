@@ -140,7 +140,7 @@ body {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 199;
+  z-index: 300;
   background: rgba(11,9,19,0.98);
   flex-direction: column;
   align-items: center;
@@ -159,13 +159,18 @@ body {
 }
 .nav-drawer a:hover { color: var(--gold); }
 .drawer-close {
-  position: absolute;
-  top: 1.6rem; right: 5%;
-  background: none; border: none;
+  position: fixed;
+  top: 1.4rem;
+  right: 5%;
+  background: none;
+  border: none;
   color: var(--gold-dk);
-  font-size: 1.4rem;
+  font-size: 2rem;
   cursor: pointer;
   transition: color 0.3s;
+  z-index: 210;
+  padding: 10px;
+  line-height: 1;
 }
 .drawer-close:hover { color: var(--gold); }
 
@@ -786,35 +791,121 @@ footer {
 .footer-copy a:hover { color: var(--gold); }
 
 /* ═══════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — TABLET  ≤ 1024px
 ═══════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .flavor-grid { grid-template-columns: repeat(4, 1fr); }
-  .about-wrap  { grid-template-columns: 1fr; gap: 4rem; }
-  .stats-col   { flex-direction: row; border-left: none; border-top: 1px solid var(--border); }
-  .stat-item   { flex: 1; border-bottom: none; border-right: 1px solid var(--border-lt); }
+  .about-wrap   { grid-template-columns: 1fr; gap: 3rem; }
+  .stats-col    { flex-direction: row; border-left: none; border-top: 1px solid var(--border); }
+  .stat-item    { flex: 1; border-bottom: none; border-right: 1px solid var(--border-lt); padding: 1.5rem 1.2rem; }
   .stat-item:last-child { border-right: none; }
+  .flavor-grid  { grid-template-columns: repeat(4, 1fr); }
   .gallery-grid { columns: 2; }
+  .drink-col    { padding: 0 1.5rem; }
+  .events-grid  { gap: 1.5rem; }
+  .event-card   { padding: 2.2rem 2rem 2rem; }
 }
 
+/* ═══════════════════════════════════════════
+   RESPONSIVE — MOBILE  ≤ 768px
+═══════════════════════════════════════════ */
 @media (max-width: 768px) {
-  section { padding: 5rem 5%; }
+  /* Global */
+  section { padding: 4rem 5%; }
+  .s-title { font-size: clamp(1.5rem, 7vw, 2.2rem); }
+
+  /* Nav */
   .nav-links { display: none; }
   .nav-ham   { display: flex; }
-  .flavor-grid { grid-template-columns: repeat(2, 1fr); }
-  .drinks-cols { grid-template-columns: 1fr; }
+  #nav       { padding: 1rem 5%; }
+  #nav.scrolled { padding: 0.75rem 5%; }
+  .nav-brand-main { font-size: 1.1rem; }
+
+  /* Hero */
+  .hero-title { font-size: clamp(2.6rem, 11vw, 4.5rem); }
+  .hero-sub   { font-size: 0.8rem; letter-spacing: 0.12em; margin-bottom: 2.2rem; }
+  .btn-outline { padding: 0.85rem 2rem; font-size: 0.58rem; }
+  .hero-hookah { width: min(260px, 70vw); opacity: 0.1; }
+  .hero-scroll { bottom: 1.5rem; }
+
+  /* About */
+  .about-wrap { gap: 2.5rem; }
+  .stats-col  { flex-direction: column; border-top: 1px solid var(--border); border-left: none; }
+  .stat-item  { border-right: none; border-bottom: 1px solid var(--border-lt); padding: 1.2rem 0; }
+  .stat-item:last-child { border-bottom: none; }
+  .stat-num   { font-size: 1.7rem; }
+
+  /* Gallery */
+  .gallery-grid   { columns: 2; column-gap: 0.8rem; }
+  .gallery-item   { margin-bottom: 0.8rem; }
+
+  /* Shisha */
+  .flavor-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .flavor-card { padding: 1.6rem 1rem 1.4rem; }
+  .flavor-emoji { font-size: 1.7rem; margin-bottom: 0.8rem; }
+  .flavor-name-ru { font-size: 0.82rem; }
+  .flavor-name-en { font-size: 0.65rem; }
+  .intensity-pill { font-size: 0.52rem; padding: 0.22rem 0.7rem; }
+
+  /* Drinks */
+  .drinks-cols { grid-template-columns: 1fr; gap: 0; }
   .drink-col  { padding: 0; border-right: none; border-bottom: 1px solid var(--border-lt); padding-bottom: 2rem; margin-bottom: 2rem; }
   .drink-col:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-  .events-grid { grid-template-columns: 1fr; }
-  .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
-  .stats-col { flex-direction: column; }
-  .stat-item { border-right: none; border-bottom: 1px solid var(--border-lt); }
+
+  /* Events */
+  .events-grid  { grid-template-columns: 1fr; gap: 1.2rem; }
+  .event-card   { padding: 2rem 1.5rem 1.8rem; }
+  .event-title  { font-size: 1.4rem; }
+  .event-desc   { font-size: 0.85rem; }
+  .event-bg-char { font-size: 3.5rem; bottom: 1rem; right: 1.5rem; }
+
+  /* Contact */
+  .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+  .map-frame    { aspect-ratio: 1 / 0.85; }
+  .hours-row    { font-size: 0.85rem; }
+  .contact-line { font-size: 0.85rem; }
+
+  /* Footer */
+  footer { padding: 2rem 5%; }
+  .footer-brand { font-size: 0.9rem; }
+  .footer-copy  { font-size: 0.62rem; }
 }
 
+/* ═══════════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE  ≤ 480px
+═══════════════════════════════════════════ */
 @media (max-width: 480px) {
+  section { padding: 3.5rem 4%; }
+
+  /* Hero */
+  .hero-title { font-size: clamp(2.2rem, 12vw, 3.2rem); line-height: 1.05; }
+  .hero-eyebrow { font-size: 0.5rem; letter-spacing: 0.35em; }
+  .hero-sub   { font-size: 0.75rem; }
+  .btn-outline { width: 100%; max-width: 280px; text-align: center; display: block; margin: 0 auto; }
+  .hero-hookah { width: min(220px, 75vw); opacity: 0.08; }
+
+  /* About */
+  .about-copy p { font-size: 0.92rem; line-height: 1.8; }
+
+  /* Gallery — single column on tiny screens */
   .gallery-grid { columns: 1; }
-  .flavor-grid  { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .s-title { font-size: 1.55rem; }
+
+  /* Shisha */
+  .flavor-grid  { gap: 0.8rem; }
+  .flavor-card  { padding: 1.3rem 0.8rem 1.2rem; }
+  .flavor-emoji { font-size: 1.5rem; }
+
+  /* Events */
+  .event-card   { padding: 1.6rem 1.2rem 1.5rem; }
+  .event-title  { font-size: 1.25rem; }
+  .event-tag    { font-size: 0.48rem; }
+
+  /* Contact */
+  .contact-icon { width: 30px; height: 30px; font-size: 0.7rem; }
+  .map-frame    { aspect-ratio: 1 / 1; }
+
+  /* Nav drawer links bigger touch targets */
+  .nav-drawer a { font-size: 1.2rem; padding: 0.4rem 0; }
+  .nav-drawer   { gap: 2.2rem; }
 }
 </style>
 </head>
@@ -1193,9 +1284,9 @@ const drawer    = document.getElementById('drawer');
 const drawerClose = document.getElementById('drawerClose');
 const dlinks    = drawer.querySelectorAll('.dl');
 
-hamBtn.addEventListener('click', () => drawer.classList.add('open'));
-drawerClose.addEventListener('click', () => drawer.classList.remove('open'));
-dlinks.forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+hamBtn.addEventListener('click', () => { drawer.classList.add('open'); hamBtn.style.display = 'none'; });
+drawerClose.addEventListener('click', () => { drawer.classList.remove('open'); hamBtn.style.display = ''; });
+dlinks.forEach(a => a.addEventListener('click', () => { drawer.classList.remove('open'); hamBtn.style.display = ''; }));
 
 /* IntersectionObserver fade-up */
 const els = document.querySelectorAll('.fade-up');
